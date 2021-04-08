@@ -1,0 +1,60 @@
+    ²²<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>page liste</title>
+		<!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+		<link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="{$url_base}public/css/samane.css"/>
+		<style>
+			h1{ 
+				color: #40007d;
+			}
+		</style>
+	</head>
+	<body>
+    <img src="{$url_base}public/image/logo.jpg" class="resize" />
+    <div class="nav navbar navbar-default navbar-fixed-top">
+        <ul class="nav navbar-nav">
+            <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+            <li><a href="{$url_base}produit/liste">Produit</a></li>
+            <li><a href="{$url_base}entree/liste">Entree</a></li>
+            <li><a href="{$url_base}sortie/liste">Sortie</a></li>
+        </ul>
+    </div>
+		<div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+			<div class="panel panel-info">
+				<div class="panel-heading">BIENVENUE A VOTRE MODELE MVC</div>
+				<div class="panel-body">
+					{if isset($entrees)}
+						{if $entrees != null}
+							<table class="table table-bordered table-stripped">
+								<tr>
+									<th>Identifiant</th>
+									<th>Quantite Stock</th>
+									<th>Prix Unitaire</th>
+                                    <th>Identifiant du produit</th>
+									<th>Action</th>
+									<th>Action</th>
+								</tr>
+								{foreach from=$entrees item=entree}
+									<tr>
+										<td>{$entree['idE']}</td>
+										<td>{$entree['qtE']}</td>
+										<td>{$entree['puE']}</td>
+                                        <td>{$entree['idP']}</td>
+										<td><a href="{$url_base}entree/delete/{$entree['idE']}">Supprimer</a></td>
+										<td><a href="{$url_base}entree/edit/{$entree['idE']}">Editer</a></td>
+									</tr>
+								{/foreach}
+							</table>
+						{else}
+							Liste vide
+						{/if}
+					{/if}
+				</div>
+				<a href="{$url_base}entree/add">Ajout d'un Entree</a>
+			</div>
+		</div>
+		
+	</body>
+</html>
